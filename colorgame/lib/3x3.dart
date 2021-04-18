@@ -1,6 +1,27 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:colorgame/gameOver.dart';
 import 'package:flutter/material.dart';
+
+class RouteHandler3x3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
+      home: MainPart(),
+      routes: {
+        'gameOver': (context) => GameOverScreen(),
+      },
+    );
+  }
+}
+
+class ScreenArguments {
+  final int score;
+  ScreenArguments(this.score);
+}
 
 class MainPart extends StatelessWidget {
   @override
@@ -25,12 +46,14 @@ class TimeCounter extends StatefulWidget {
   _TimeCounterState createState() => _TimeCounterState();
 }
 
+int globalscore = 0;
+
 class _TimeCounterState extends State<TimeCounter> {
   int _counter = 60;
   Timer _timer;
 
   void _startTimer() {
-    _counter = 60;
+    _counter = 10;
     if (_timer != null) {
       _timer.cancel();
     }
@@ -40,6 +63,8 @@ class _TimeCounterState extends State<TimeCounter> {
           _counter--;
         } else {
           _timer.cancel();
+          Navigator.pushNamed(context, '/gameOver',
+              arguments: ScreenArguments(globalscore));
         }
       });
     });
@@ -49,6 +74,7 @@ class _TimeCounterState extends State<TimeCounter> {
   void initState() {
     super.initState();
     _startTimer();
+    globalscore = 0;
   }
 
   @override
@@ -110,7 +136,7 @@ class _ColorMatchState extends State<ColorMatch> {
     var randomIndex = Random().nextInt(8);
     return randomIndex;
   }
-  
+
   @override
   Widget build(BuildContext context) {
     Color mainColor = getRandomColor();
@@ -162,12 +188,17 @@ class _ColorMatchState extends State<ColorMatch> {
               mainAxisSpacing: 10,
               children: List.generate(9, (index) {
                 return ElevatedButton(
-                  onPressed: randomIndex == index ? () {
-                    setState(() {
-                      mainColor = getRandomColor();
-                      randomIndex = getRandomIndex();
-                    });
-                  } : (){},
+                  onPressed: randomIndex == index
+                      ? () {
+                          setState(() {
+                            mainColor = getRandomColor();
+                            randomIndex = getRandomIndex();
+                            globalscore += 10;
+                          });
+                        }
+                      : () {
+                          globalscore -= 10;
+                        },
                   child: null,
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(

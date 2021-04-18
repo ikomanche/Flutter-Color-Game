@@ -1,3 +1,4 @@
+import 'package:colorgame/gameOver.dart';
 import 'package:flutter/material.dart';
 
 import '3x3.dart';
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       //home: MyHomePage('Color Game'),
       routes: {
         '/':(context) => MyHomePage('Color Game'),
-        '/3x3':(context) => MainPart()
+        '/3x3':(context) => MainPart(),
+        '/gameOver':(context) => GameOverScreen()
       },
       initialRoute: '/',
     );
