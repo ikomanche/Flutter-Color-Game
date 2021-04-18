@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       //home: MyHomePage('Color Game'),
       routes: {
         '/':(context) => MyHomePage('Color Game'),
-        '/3x3':(context) => EasyMode()
+        '/3x3':(context) => MainPart()
       },
       initialRoute: '/',
     );
