@@ -55,7 +55,9 @@ class MyHomePage extends StatelessWidget {
                               minimumSize: MaterialStateProperty.all<Size>(
                                   Size(150, 100)))),
                       ElevatedButton(
-                          onPressed: null,
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/4x4');
+                          },
                           child: Text('4x4'),
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
@@ -63,7 +65,9 @@ class MyHomePage extends StatelessWidget {
                               minimumSize: MaterialStateProperty.all<Size>(
                                   Size(150, 100)))),
                       ElevatedButton(
-                          onPressed: null,
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/5x5');
+                          },
                           child: Text('5x5'),
                           style: ButtonStyle(
                               backgroundColor:

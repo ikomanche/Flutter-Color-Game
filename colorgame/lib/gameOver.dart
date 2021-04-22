@@ -1,5 +1,5 @@
-import 'package:colorgame/3x3.dart';
 import 'package:flutter/material.dart';
+import 'Score.dart';
 
 class GameOverScreen extends StatelessWidget {  
   @override

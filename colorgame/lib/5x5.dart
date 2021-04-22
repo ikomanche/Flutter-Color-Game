@@ -3,12 +3,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'Score.dart';
 
-class MainPart3x3 extends StatelessWidget {
+
+
+class MainPart5x5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("3x3 Easy Mode"),
+        title: Text("5x5 Hard Mode"),
         centerTitle: true,
       ),
       body: Container(
@@ -161,12 +163,12 @@ class _ColorMatchState extends State<ColorMatch> {
           Container(
             height: 520,
             child: GridView.count(
-              crossAxisCount: 3,
+              crossAxisCount: 5,
               primary: false,
               padding: const EdgeInsets.all(20),
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              children: List.generate(9, (index) {
+              children: List.generate(25, (index) {
                 return ElevatedButton(
                   onPressed: randomIndex == index
                       ? () {
