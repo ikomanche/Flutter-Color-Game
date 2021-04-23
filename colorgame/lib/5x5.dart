@@ -35,7 +35,7 @@ class _TimeCounterState extends State<TimeCounter> {
   Timer _timer;
 
   void _startTimer() {
-    _counter = 10;
+    _counter = 60;
     if (_timer != null) {
       _timer.cancel();
     }
