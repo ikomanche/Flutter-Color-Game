@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+class ScreenArguments2 {
+  final int mode;
+  ScreenArguments2(this.mode);
+}
+
 class MyHomePage extends StatelessWidget {
   MyHomePage(this.title);
 
@@ -34,21 +39,17 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             LimitedBox(
-              //maxHeight: 750,
               child: Container(
-                //height: 250,
-                //color: Colors.blue,
                 child: Center(
-                  //widthFactor: 150,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/3x3');
+                            Navigator.pushNamed(context, '/startGame',arguments: ScreenArguments2(3));
                           },
-                          child: Text('3x3'),
+                          child: Text('3x3',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   Colors.green),
@@ -56,9 +57,9 @@ class MyHomePage extends StatelessWidget {
                                   Size(150, 100)))),
                       ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/4x4');
+                            Navigator.pushNamed(context, '/startGame',arguments: ScreenArguments2(4));
                           },
-                          child: Text('4x4'),
+                          child: Text('4x4',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
                           style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                   Colors.yellow),
@@ -66,9 +67,9 @@ class MyHomePage extends StatelessWidget {
                                   Size(150, 100)))),
                       ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/5x5');
+                            Navigator.pushNamed(context, '/startGame',arguments: ScreenArguments2(5));
                           },
-                          child: Text('5x5'),
+                          child: Text('5x5',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold)),
                           style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all<Color>(Colors.red),

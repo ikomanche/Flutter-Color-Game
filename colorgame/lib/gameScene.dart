@@ -1,14 +1,19 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'Score.dart';
+import 'home.dart';
 
-class MainPart3x3 extends StatelessWidget {
+class ScreenArguments {
+  final int score;
+  ScreenArguments(this.score);
+}
+
+class MainPart extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {    
     return Scaffold(
       appBar: AppBar(
-        title: Text("3x3 Easy Mode"),
+        title: Text("Color Match Game"),
         centerTitle: true,
       ),
       body: Container(
@@ -88,8 +93,7 @@ class _TimeCounterState extends State<TimeCounter> {
               ),
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.transparent),
-                minimumSize: MaterialStateProperty.all(Size(150, 90)),
-                //side: MaterialStateProperty.all(BorderSide(width: 5)),
+                minimumSize: MaterialStateProperty.all(Size(150, 90))               
               ),
             )
           ],
@@ -119,6 +123,7 @@ class _ColorMatchState extends State<ColorMatch> {
 
   @override
   Widget build(BuildContext context) {
+    final ScreenArguments2 args = ModalRoute.of(context).settings.arguments as ScreenArguments2;
     Color mainColor = getRandomColor();
     int randomIndex = getRandomIndex();
     return Container(
@@ -161,12 +166,12 @@ class _ColorMatchState extends State<ColorMatch> {
           Container(
             height: 520,
             child: GridView.count(
-              crossAxisCount: 3,
+              crossAxisCount: args.mode,
               primary: false,
               padding: const EdgeInsets.all(20),
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
-              children: List.generate(9, (index) {
+              children: List.generate(args.mode * args.mode, (index) {
                 return ElevatedButton(
                   onPressed: randomIndex == index
                       ? () {
@@ -188,7 +193,6 @@ class _ColorMatchState extends State<ColorMatch> {
                 );
               }),
             ),
-            //color: Colors.green,
           )
         ],
       ),
